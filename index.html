@@ -5,28 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
 
-    <title>Document</title>
+    <title>Portfolio</title>
 </head>
 <body>
-    <!-- Header-->
     <header class="header">
-        <nav class="nav-bar" id="nav-bar">
-            <ul class="nav-list">
+        <nav class="nav-bar">
+            <div class="nav-logo">
+                <a href="#home">NM</a>
+            </div>
+            
+            <ul class="nav-list" id="nav-list">
                 <li class="nav-items"><a href="#home">Home</a></li>
                 <li class="nav-items"><a href="#projects">Projects</a></li>
                 <li class="nav-items"><a href="#about">About me</a></li>
                 <li class="nav-items"><a href="#contact">Contact me</a></li>
-        
-                    <button class="nav-toggle" aria-label="menu" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </li>
-            </ul>    
+            </ul>
+            <button class="nav-toggle" onclick="toggleMenu()">
+                <img src="images/bars-solid.png" alt="menu" class="nav-icon">
+            </button>
         </nav>
     </header>
     <main>
         <section id="home" class="hero-section">
-            <h1>Software Developer</h1>
+            <div class="profile-container">
+                <img src="" alt="" class="profile-pic">
+            </div>
+            <h1>Maria Moore</h1>
+            <p class="subtitle">Software Developer</p>
         </section>
 
         <section id="projects" class="projects-section">
@@ -39,5 +44,6 @@
             </div>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0f0f20; 
+    color: #e4e4e4;
+    line-height: 1.6;
+}
+.header {
+    background: rgba(10, 10, 25, 0.95); /* Professional Dark tint */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    position: sticky; /* Sticks to the top */
+    top: 0;
+    width: 100%;
+    z-index: 1000;  /* Keeps it above your project images */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.nav-list {
+    display: flex;
+    list-style: none; 
+    gap: 2.5rem;
+}
+.nav-items a {
+    text-decoration: none;
+    color: #c0c0f0; /* Soft silver-indigo */
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+.nav-items a:hover {
+    color: #7575d8; /* Subtle glow */
+}
+
+/* --- Desktop Toggle (Hidden) --- */
+.nav-toggle {
+    display: none; /* Keep hidden on desktop */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Combined Mobile View (770px and below) --- */
+@media (max-width: 770px) {
+    /* Show the button */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Hide the list and turn it into a vertical menu */
+    .nav-list {
+        display: flex; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Sits right at the bottom of the header */
+        left: 0;
+        width: 100%;
+        background-color: #0a0a19;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+        /* The Secret Sauce for Smoothness */
+        overflow: hidden;
+        max-height: 0;            /* Start at 0 height */
+        opacity: 0;               /* Start invisible */
+        transition: max-height 0.5s ease, opacity 0.3s ease;
+    }
+
+    /* When JS adds the .active class, show the menu */
+    .nav-list.active {
+        display: flex; 
+        flex-direction: column;
+        max-height: 300px;        /* Added this: allows it to grow */
+        opacity: 1;               /* Added this: makes it visible */
+        gap: 1.5rem;
+        padding: 2rem 0;
+        /* Adds a nice glow at the bottom of the menu */
+        border-bottom: 2px solid #7575d8; 
+        /* Ensures the menu is easy to read */
+        background: rgba(15, 15, 32, 0.98);
+    }
+}
+/*--- Button ---*/
+.nav-icon {
+    width: 25px;   /* Adjust size as needed */
+    height: auto;
+    display: block;
+    /* If your icon is black and you need it white, add this filter: */
+    filter: invert(1); 
+}
+
+/* --- Main Section Spacer --- */
+main {
+    margin-top: 100px; /* Keeps content from hiding behind the fixed nav */
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(117, 117, 216, 0.5); /* Soft Indigo Glow */
+    margin-bottom: 0.5rem;
+}
