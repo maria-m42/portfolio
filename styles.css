@@ -122,3 +122,30 @@ h1 {
     text-shadow: 0 0 10px rgba(117, 117, 216, 0.5); /* Soft Indigo Glow */
     margin-bottom: 0.5rem;
 }
+/* About Section */ 
+.about-section {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03); /* Very faint highlight */
+    border-radius: 15px;
+    border: 1px solid rgba(117, 117, 216, 0.2); /* Faint indigo border */
+}
+
+.about-section h2 {
+    color: #7575d8;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.about-content p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    color: #d1d1e0;
+    text-align: left; /* Better for readability in longer text */
+}
+
+.about-content strong {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(117, 117, 216, 0.8);
+}
