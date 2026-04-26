@@ -188,8 +188,9 @@ body {
         padding: 2rem 0;
         /* Adds a nice glow at the bottom of the menu */
         border-bottom: 2px solid #00ffcc; 
-        /* Ensures the menu is easy to read */
-        background: rgba(92, 92, 92, 0.897);
+        /* UPDATED BACKGROUND LOGIC */
+        background: rgba(10, 10, 20, 0.95); /* Deep Space Tint */
+        backdrop-filter: blur(15px);        /* This gives it that 'frosted' glass look */
     }
 }
 
@@ -199,7 +200,7 @@ body {
     height: auto;
     display: block;
     /* If your icon is black and you need it white, add this filter: */
-    filter: invert(1); 
+    filter: brightness(0) invert(1); 
 }
 
 /* --- Main Section Spacer --- */
@@ -215,6 +216,14 @@ h1 {
     text-shadow: 0 0 10px rgba(0, 131, 76, 0.5); 
     margin-bottom: 0.5rem;
 }
+/* Grouping your sections so they all stop 100px before the top */
+#home, 
+#projects, 
+#about, 
+#contact {
+    scroll-margin-top: 100px;
+}
+/* --- Hero Section --- */
 .hero-section {
     position: relative;
     scroll-margin-top: 100px; 
@@ -228,8 +237,6 @@ h1 {
     overflow: hidden;
     
 }
-
-
 
 /* --- Projects Section --- */ 
 .project-grid {
@@ -318,6 +325,7 @@ h1 {
     background: rgba(255, 255, 255, 0.03); /* Very faint highlight */
     border-radius: 15px;
     border: 1px solid #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
 }
 .about-section h2 {
     color: white;
@@ -334,5 +342,78 @@ h1 {
     color: white; 
     text-shadow: 0 0 10px #ff007f;
 }
+@media (max-width: 600px) {
+    .about-section {
+        margin: 1rem; /* Adds space around the outside so borders don't hit the screen edge */
+        padding: 1.5rem; /* Shrinks the inside space so the box isn't too tall */
+        width: auto; /* Lets the box size itself to the screen */
+    }
+
+    /* This ensures the text stays inside the borders */
+    .about-content p {
+        font-size: 1rem; 
+    }
+}
 
 /* --- Contact Section --- */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.3); /* Match your teal glow */
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* The Glow Focus Effect */
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.glow-button {
+    background: transparent;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    /* Increased the second number (horizontal padding) to 40px */
+    padding: 12px 40px; 
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    align-self: flex-start;
+    /* Added a min-width to ensure it looks balanced */
+    min-width: 200px; 
+    letter-spacing: 1px;
+}
+
+.glow-button:hover {
+    background: #00ffcc;
+    color: #000;
+    box-shadow: 0 0 25px #00ffcc;
+}
+
+/* Placeholder color to keep it subtle */
+::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}

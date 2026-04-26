@@ -38,7 +38,7 @@ document.addEventListener('mousemove', (e) => {
 
         // If the mouse is within 400px, make the text pop more
         if (distance < 400) {
-            const intensity = 1 + (1 - distance / 400) * 0.15; // Up to 30% brighter
+            const intensity = 1 + (1 - distance / 400) * 0.10; // Up to 30% brighter
             profileContainer.style.filter = `brightness(${intensity})`;
         } else {
             profileContainer.style.filter = `brightness(1)`;
