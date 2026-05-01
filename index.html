@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles(1).css" />
 
     <title>Portfolio</title>
 </head>
@@ -35,11 +35,11 @@
     </header>
     <main>
         <section id="home" class="hero-section">
-            <div class="profile-container">
-                <img src="" alt="" class="profile-pic">
+            <div class="hero-overlay"></div> <div class="hero-content">
+                <h1 class="hero-name">Maria Moore</h1>
+                <p class="hero-subtitle">Software Developer & Artist</p>
+                <div class="scroll-indicator"></div>
             </div>
-            <h1>Maria Moore</h1>
-            <p class="subtitle">Software Developer</p>
         </section>
 
         <section id="projects" class="projects-section">
@@ -47,42 +47,79 @@
             <div class="project-grid">
                 <div class="project-card">
                     <h3>SketchVault</h3>
-                    <p>A secure pipeline for archiving physical art assets.</p>
+                    <img src=".png" alt="" class="project-image">
+                    <p>A secure pipeline for archiving physical art assets. Integrating traditional art with digital security.</p>
+                </div>
+                <div class="project-card coming-soon">
+                    <h3>Coming Soon...</h3>
+                    <img src=".jpg" alt="" class="project-image">
+                    <p></p>
+                </div>
+                <div class="project-card coming-soon">
+                    <h3>Coming Soon...</h3>
+                    <img src=".png" alt="" class="project-image">
+                    <p></p>
                 </div>
             </div>
         </section>
+
         <section id="about" class="about-section">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>I am a Software Development student currently completing my Bachelor's degree, 
-                    with a strong foundation in frontend technologies through my 
-                    <strong>Nucamp Web Development</strong> certification. 
-                </p>
-                <p>My background as a traditional artist—specializing in drawing and paper quilling—gives 
-                    me a unique perspective on UI/UX design. I love bridging the gap between 
-                    physical creativity and digital precision, which led me to develop projects 
-                    like <strong>SketchVault</strong>.
-                </p>
+            <div class="about-container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p>
+                        I am a <strong>Software Developer</strong> and <strong>Artist</strong> dedicated to 
+                        bridging the gap between physical creativity and digital precision. 
+                        With a strong foundation in <strong>Java</strong> and <strong>Linux</strong> environments, 
+                        I focus on building robust back-end systems paired with 
+                        thoughtful <strong>UI/UX Design</strong>. 
+                    </p>
+                    <p>
+                        Whether I am refining a complex codebase or designing a "Liquid Glass" interface, 
+                        my goal is to create seamless, secure, and visually striking user experiences 
+                        that carry the same level of detail as my traditional art in 
+                        <strong>SketchVault</strong>.
+                    </p>
+                </div>
             </div>
         </section>
+
         <section id="contact" class="contact-section">
-            <div class="glass-container">
-                <h2 class="section-title">Contact Me</h2>
-                <form action="#" method="POST" class="contact-form">
+            <h2>Get in Touch</h2>
+            <div class="contact-container">
+                <form class="contact-form">
                     <div class="input-group">
-                        <input type="text" id="name" name="name" required placeholder="Name">
+                        <input type="text" placeholder="Name" required>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="email" placeholder="Email" required>
                     </div>
                     <div class="input-group">
-                        <textarea id="message" name="message" rows="5" required placeholder="Write message here... "></textarea>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="glow-button">Send Message</button>
                 </form>
             </div>
         </section>
+
     </main>
     <script src="script.js"></script>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 Maria Moore | Built with Precision</p>
+            <div class="social-links">
+                <a href="your-linkedin-link" class="social-icon" target="_blank" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="your-github-link" class="social-icon" target="_blank" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="your-handshake-link" class="social-icon" target="_blank" aria-label="Handshake">
+                    <i class="fa-solid fa-handshake"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
