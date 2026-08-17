@@ -89,3 +89,33 @@ function fallbackCopy(element, text) {
     
     document.body.removeChild(textArea);
 }
+
+/* ==========================================================================
+   MODAL CONTROLS (Open / Close HTML Dialog)
+   ========================================================================== */
+
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.showModal();
+        // Prevents the background page from scrolling while modal is open
+        document.body.style.overflow = 'hidden'; 
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.close();
+        // Restores scrolling when closed
+        document.body.style.overflow = 'auto'; 
+    }
+}
+
+// Close modal automatically if the user clicks outside the modal content box
+document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'DIALOG') {
+        e.target.close();
+        document.body.style.overflow = 'auto';
+    }
+});

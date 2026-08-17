@@ -16,17 +16,12 @@
     <title>Portfolio</title>
 </head>
 <body>
-    <div class="portfolio-bg">
-        <div class="stars layer1"></div>
-        <div class="stars layer2"></div>
-        <div class="stars layer3"></div>
-    </div>
     <header class="header">
         <nav class="nav-bar">
             <!-- Logo -->
             <div class="nav-logo">
                 <a href="#home">
-                    <img src="" class="logo-img">
+                    <img src="{NM}logo.png" class="logo-img">
                 </a>
             </div>
 
@@ -35,6 +30,7 @@
                 <li class="nav-items"><a href="#projects">Projects</a></li>
                 <li class="nav-items"><a href="#about">About me</a></li>
                 <li class="nav-items"><a href="#contact">Contact me</a></li>
+                <li class="nav-items"><a href="Resume(revised).pdf" class="nav-resume-btn" target="_blank">Resume</a></li>
             </ul>
             <button class="nav-toggle" onclick="toggleMenu()">
                 <img src="images/bars-solid.png" alt="menu" class="nav-icon">
@@ -53,10 +49,12 @@
         <section id="projects" class="projects-section">
             <h2>Featured Project</h2>
             <div class="project-grid">
-                <div class="project-card">
+                <!-- AFTER -->
+                <div class="project-card" onclick="openModal('sketchvault-modal')">
                     <h3>SketchVault</h3>
-                    <img src="images/acbc342b-8259-4390-b041-43d58bbf16ef.jpg" alt="" class="project-image">
+                    <img src="images/Sketchvault_card.jpg" alt="SketchVault Project" class="project-image">
                     <p>A secure pipeline for archiving physical art assets. Integrating traditional art with digital security.</p>
+                    <span class="card-action-hint">Click to view dev progress &rarr;</span>
                 </div>
                 <!-- 
                 <div class="project-card coming-soon">
@@ -110,6 +108,91 @@
                 </form>
             </div>
         </section>
+
+        <!-- SKETCHVAULT PROGRESS MODAL -->
+        <dialog id="sketchvault-modal" class="project-modal">
+            <div class="modal-container">
+                <button class="modal-close-btn" onclick="closeModal('sketchvault-modal')">&times;</button>
+    
+                <header class="modal-header">
+                    <h2>SKETCHVAULT</h2>
+                    <span class="status-badge">DEVELOPMENT STATUS: IN PROGRESS (v0.1 BETA)</span>
+                </header>
+
+            <div class="modal-body">
+                <!-- Left Column: Visual Development -->
+                <section class="modal-col visual-col">
+                    <h3>VISUAL DEVELOPMENT</h3>
+        
+                    <div class="main-preview-box">
+                        <img src="images/Sketchvault_card.jpg" alt="Webpage Screenshot Conceptual Visual Goal">
+                        <p class="caption">Webpage Screenshot<br><span>Conceptual Visual Goal</span></p>
+                    </div>
+
+                    <div class="wireframes-row">
+                        <div class="thumb-box">
+                            <img src="images/Sketchvault_card.jpg" alt="Concept Sketch 1">
+                            <p>Concept Sketch 1</p>
+                        </div>
+                        <div class="thumb-box">
+                            <img src="images/Sketchvault_card.jpg" alt="Wireframe Iteration 1">
+                            <p>Wireframe Iteration 1</p>
+                        </div>
+                        <div class="thumb-box">
+                            <img src="images/Sketchvault_card.jpg" alt="UI/UX Component Flow">
+                            <p>UI/UX Component Flow</p>
+                        </div>
+                    </div>
+                    <p class="caption sub-caption">Initial Wireframes & Sketches</p>
+                </section>
+
+                <!-- Right Column: Dev Log & Architecture -->
+                <section class="modal-col dev-col">
+                    <h3>CURRENT PIPELINE PROGRESS</h3>
+        
+                    <div class="pipeline-steps">
+                        <div class="step step-done">
+                            <span class="icon">✓</span>
+                            <span>Discovery and Wireframing</span>
+                        </div>
+                        <div class="step step-active">
+                            <span class="icon">In Progress</span>
+                            <span>Core Java Logic and File Processing</span>
+                        </div>
+                        <div class="step step">
+                            <span class="icon">○</span>
+                            <span>UI/UX Design Implementation</span>
+                        </div>
+                        <div class="step step">
+                            <span class="icon">○</span>
+                            <span>AWS S3 Cloud & Database Integration</span>
+                        </div>
+                        <div class="step step">
+                            <span class="icon">○</span>
+                            <span>QA Testing and Deployment</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-log">
+                        <h4>Current Focus & Stack</h4>
+                        <ul>
+                            <li><strong>Language:</strong> Java for core business logic & file management</li>
+                            <li><strong>Storage Target:</strong> AWS S3 (Planned for scalable cloud archiving)</li>
+                            <li><strong>UI Design:</strong> Desktop/Web interface mockups</li>
+                        </ul>
+                    </div>
+
+                    <div class="roadmap-and-actions">
+                        <h4>Roadmap & ACTIONS</h4>
+                        <div class="actions-footer">
+                            <a href="https://github.com/maria-m42" target="_blank" class="btn-github">VIEW GITHUB REPO</a>
+                            <button class="btn-disabled" disabled>LIVE DEMO (COMING SOON)</button>
+                        </div>
+                    </div>
+                </section>
+                </div>
+            </div>
+        </dialog>
 
     </main>
     <script src="script.js"></script>
