@@ -21,7 +21,7 @@
             <!-- Logo -->
             <div class="nav-logo">
                 <a href="#home">
-                    <img src="{NM}logo.png" class="logo-img">
+                    <img src="{NM_Logo}.png" class="logo-img"> 
                 </a>
             </div>
 
@@ -30,7 +30,7 @@
                 <li class="nav-items"><a href="#projects">Projects</a></li>
                 <li class="nav-items"><a href="#about">About me</a></li>
                 <li class="nav-items"><a href="#contact">Contact me</a></li>
-                <li class="nav-items"><a href="Resume(revised).pdf" class="nav-resume-btn" target="_blank">Resume</a></li>
+                <li class="nav-items"><a href="NM_Resume.pdf" class="nav-resume-btn" target="_blank">Resume</a></li>
             </ul>
             <button class="nav-toggle" onclick="toggleMenu()">
                 <img src="images/bars-solid.png" alt="menu" class="nav-icon">
@@ -124,26 +124,25 @@
                 <section class="modal-col visual-col">
                     <h3>VISUAL DEVELOPMENT</h3>
         
-                    <div class="main-preview-box">
-                        <img src="images/Sketchvault_card.jpg" alt="Webpage Screenshot Conceptual Visual Goal">
-                        <p class="caption">Webpage Screenshot<br><span>Conceptual Visual Goal</span></p>
+                    <div class="main-preview-box" onclick="openLightboxGroup(['images/Sketchvault_card.jpg'], 0, 'UI/UX Design: Figma (Desktop & Mobile Prototypes)')">
+                        <img src="images/Sketchvault_card.jpg" alt="SKETCHVAULT UI/UX Design">
+                        <p class="caption">UI/UX Design: <br><span>Figma (Desktop & Mobile Prototypes)</span></p>
                     </div>
 
                     <div class="wireframes-row">
-                        <div class="thumb-box">
-                            <img src="images/Sketchvault_card.jpg" alt="Concept Sketch 1">
-                            <p>Concept Sketch 1</p>
+                        <div class="thumb-box" onclick="openLightboxGroup(['MainPage Wireframe.png', 'SecondaryPage Wireframe.png'], 0, 'Desktop Wireframes (Home & Secondary Pages)')">
+                            <img src="MainPage Wireframe.png" alt="Wireframe Iteration 1">
+                            <p>Desktop Wireframes (Home & Secondary Pages)</p>
                         </div>
-                        <div class="thumb-box">
-                            <img src="images/Sketchvault_card.jpg" alt="Wireframe Iteration 1">
-                            <p>Wireframe Iteration 1</p>
+                        <div class="thumb-box" onclick="openLightboxGroup(['Login Wireframe.png'], 0, 'User Authentication (Login & Sign Up)')">
+                            <img src="Login Wireframe.png" alt="Wireframe Iteration 2">
+                            <p>User Authentication (Login & Sign Up)</p>
                         </div>
-                        <div class="thumb-box">
-                            <img src="images/Sketchvault_card.jpg" alt="UI/UX Component Flow">
-                            <p>UI/UX Component Flow</p>
+                        <div class="thumb-box" onclick="openLightboxGroup(['Mobile Wireframe.png', 'images/Sketchvault_card.jpg'], 0, 'Mobile App Wireframes')">
+                            <img src="images/Sketchvault_card.jpg" alt="Wireframe Iteration 3">
+                            <p>Mobile App Wireframes</p>
                         </div>
                     </div>
-                    <p class="caption sub-caption">Initial Wireframes & Sketches</p>
                 </section>
 
                 <!-- Right Column: Dev Log & Architecture -->
@@ -153,32 +152,37 @@
                     <div class="pipeline-steps">
                         <div class="step step-done">
                             <span class="icon">✓</span>
-                            <span>Discovery and Wireframing</span>
+                            <span>Planning & Requirement Analysis</span>
+                        </div>
+                        <div class="step step-done">
+                            <span class="icon">✓</span>
+                            <span>System Design & Wireframing</span>
                         </div>
                         <div class="step step-active">
                             <span class="icon">In Progress</span>
-                            <span>Core Java Logic and File Processing</span>
+                            <span>Implementation & Coding (Java Core)</span>
                         </div>
                         <div class="step step">
                             <span class="icon">○</span>
-                            <span>UI/UX Design Implementation</span>
+                            <span>Testing & Quality Assurance</span>
                         </div>
                         <div class="step step">
                             <span class="icon">○</span>
-                            <span>AWS S3 Cloud & Database Integration</span>
+                            <span>Cloud Deployment (AWS S3)</span>
                         </div>
                         <div class="step step">
                             <span class="icon">○</span>
-                            <span>QA Testing and Deployment</span>
+                            <span>Maintenance & Beta Updates</span>
                         </div>
                     </div>
 
                     <div class="tech-log">
                         <h4>Current Focus & Stack</h4>
                         <ul>
-                            <li><strong>Language:</strong> Java for core business logic & file management</li>
-                            <li><strong>Storage Target:</strong> AWS S3 (Planned for scalable cloud archiving)</li>
-                            <li><strong>UI Design:</strong> Desktop/Web interface mockups</li>
+                            <li><strong>Back-End:</strong> Java for core file processing & data management</li>
+                            <li><strong>Front-End / UI:</strong> Figma, HTML5, Modern CSS, JavaScript</li>
+                            <li><strong>Cloud & Security:</strong> AWS S3 (Planned for asset storage)</li>
+                            <li><strong>Version Control:</strong> Git & GitHub</li>
                         </ul>
                     </div>
 
@@ -190,6 +194,20 @@
                         </div>
                     </div>
                 </section>
+                </div>
+            </div>
+            <!-- Fullscreen Image Lightbox Overlay -->
+            <div id="image-lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+                <div class="lightbox-content">
+                    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+                    <!-- === NEW NAVIGATION ARROWS === -->
+                    <button class="lightbox-prev" onclick="changeLightboxImg(-1, event)" aria-label="Previous image">&#10094;</button>
+                    <img id="lightbox-img" src="" alt="Expanded View">
+                    <button class="lightbox-next" onclick="changeLightboxImg(1, event)" aria-label="Next image">&#10095;</button>
+        
+                    <!-- === NEW PAGINATION COUNTER === -->
+                    <div class="lightbox-pagination" id="lightbox-counter">1 / 1</div>
+                    <p id="lightbox-caption"></p>
                 </div>
             </div>
         </dialog>

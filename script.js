@@ -112,10 +112,94 @@ function closeModal(modalId) {
     }
 }
 
-// Close modal automatically if the user clicks outside the modal content box
 document.addEventListener('click', (e) => {
+    const lightbox = document.getElementById('image-lightbox');
+    // Don't close the dialog if the user is clicking inside the lightbox overlay
+    if (lightbox && lightbox.classList.contains('active')) return;
+
     if (e.target.tagName === 'DIALOG') {
         e.target.close();
         document.body.style.overflow = 'auto';
     }
 });
+
+
+/* ==========================================================================
+   MULTI-IMAGE LIGHTBOX GALLERY (arrows + counter)
+   ========================================================================== */
+let currentGroup = [];
+let currentIndex = 0;
+/**
+ * Opens the lightbox for a group of images.
+ * @param {string[]} imageArray - Array of image source URLs (e.g., ['img1.png', 'img2.png']).
+ * @param {number} startIndex - The index of the image in the array to show first.
+ * @param {string} captionText - The text to display in the caption.
+ */
+function openLightboxGroup(imageArray, startIndex, captionText) {
+    if (!imageArray || imageArray.length === 0) return;
+
+    currentGroup = imageArray;
+    currentIndex = startIndex;
+    
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    // Update image and caption
+    lightboxImg.src = currentGroup[currentIndex];
+    lightboxCaption.textContent = captionText || '';
+    
+    // === NEW: Initialize Counter ===
+    updateLightboxCounter(lightboxCounter);
+    
+    lightbox.classList.add('active');
+}
+/**
+ * Changes the displayed image in the lightbox group.
+ * @param {number} direction - 1 for next, -1 for previous.
+ * @param {Event} event - The click event to stop propagation.
+ */
+function changeLightboxImg(direction, event) {
+    if (event) event.stopPropagation(); // Prevent backdrop close trigger
+    if (currentGroup.length <= 1) return; // Exit if only one image
+
+    // Cycle index (with rollover protection)
+    currentIndex = (currentIndex + direction + currentGroup.length) % currentGroup.length;
+    
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    
+    // Update image
+    lightboxImg.src = currentGroup[currentIndex];
+    
+    // === NEW: Update Counter ===
+    updateLightboxCounter(lightboxCounter);
+}
+/**
+ * Helper function to refresh the pagination counter.
+ * @param {HTMLElement} counterElement - The DOM element for the counter.
+ */
+function updateLightboxCounter(counterElement) {
+    if (counterElement && currentGroup.length > 1) {
+        counterElement.textContent = `${currentIndex + 1} / ${currentGroup.length}`;
+        counterElement.style.display = 'block'; // Show if multi-image
+    } else if (counterElement) {
+        counterElement.style.display = 'none'; // Hide if single image
+    }
+}
+/**
+ * Closes the lightbox and resets variables.
+ * @param {Event} event - The click event to check target.
+ */
+function closeLightbox(event) {
+    // Only close if user clicked the backdrop or the close 'X' button
+    if (event.target.id === 'image-lightbox' || event.target.classList.contains('lightbox-close')) {
+        const lightbox = document.getElementById('image-lightbox');
+        lightbox.classList.remove('active');
+        
+        // Clear variables so they don't persist next time
+        currentGroup = [];
+        currentIndex = 0;
+    }
+}

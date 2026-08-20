@@ -39,7 +39,7 @@ section {
     top: 0;
     width: 100%;
     z-index: 1000;  
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.45);
+    box-shadow: 0 0 20px rgba(0, 255, 221, 0.6);
     padding: 5px 0;
     border-bottom: 1px solid rgba(0, 255, 204, 0.15);
 }
@@ -60,13 +60,13 @@ section {
     align-items: center;
 }
 .logo-img {
-    height: 45px;          /* Controls logo height so header stays slim */
+    height: 40px;          /* Controls logo height so header stays slim */
     width: auto;           /* Maintains original aspect ratio */
     display: block;
     object-fit: contain;
     transform: scale(1.32); /* Visual scale boost without affecting layout height */
     transform-origin: center left; /* Scales outward from the left edge */
-    filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6)); /* Signature teal glow */
+    filter: drop-shadow(0 0 8px rgba(0, 255, 221, 0.6)); /* Signature teal glow */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 .logo-img:hover {
@@ -219,7 +219,7 @@ section {
 
 /* =========== Projects =========== */
 .projects-section {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 80px;
     text-align: center;
     scroll-margin-top: 80px; 
@@ -321,7 +321,7 @@ section {
 
 /* =========== About me =========== */
 .about-section {
-    padding: 120px 20px;
+    padding: 130px 20px;
     display: flex;
     justify-content: center;
 }
@@ -796,4 +796,119 @@ section {
     .modal-container {
         padding: 1.5rem;
     }
+}
+/* Container for hover icon */
+.thumb-box, .main-preview-box {
+    position: relative;
+    cursor: pointer;
+}
+/* Magnifying Glass Icon on Hover */
+.thumb-box::after, .main-preview-box::after {
+    content: '\f002'; /* Font Awesome Magnifying Glass Unicode */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 0.9rem;
+    color: #00ffcc;
+    background: rgba(5, 5, 5, 0.85);
+    border: 1px solid rgba(0, 255, 204, 0.4);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+.thumb-box:hover::after, .main-preview-box:hover::after {
+    opacity: 1;
+    transform: scale(1.05);
+}
+/* Lightbox Modal Overlay */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox-overlay.active {
+    display: flex;
+}
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stacks image/caption/pagination */
+}
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.15);
+}
+/* Base style for both arrows */
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 15, 15, 0.7);
+    color: #fff;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10; /* Ensures they sit over the image */
+}
+/* Specific position for each arrow */
+.lightbox-prev { left: -60px; }  /* Pushed outside the content box */
+.lightbox-next { right: -60px; } /* Adjust these values if your layout needs it */
+/* Hover glow for navigation */
+.lightbox-prev:hover, .lightbox-next:hover {
+    background: rgba(0, 255, 204, 0.3);
+    color: #050505;
+    border-color: #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+}
+/* Position for the pagination counter */
+.lightbox-pagination {
+    position: absolute;
+    bottom: -35px; /* Sits below the image, above the caption */
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    background: rgba(15, 15, 15, 0.8);
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 204, 0.15);
+}
+/* Close 'X' Button */
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #00ffcc;
+    font-size: 2rem;
+    cursor: pointer;
 }
