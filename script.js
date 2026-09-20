@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         emailLink.addEventListener('click', function(e) {
             e.preventDefault(); // Stop any default link behavior
             
-            const emailText = 'natalie.maria.m42@gmail.com';
+            const emailText = 'nm.moore.dev@gmail.com';
             
             // Modern Clipboard API
             if (navigator.clipboard && window.isSecureContext) {
@@ -98,7 +98,6 @@ function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.showModal();
-        // Prevents the background page from scrolling while modal is open
         document.body.style.overflow = 'hidden'; 
     }
 }
@@ -107,14 +106,12 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.close();
-        // Restores scrolling when closed
         document.body.style.overflow = 'auto'; 
     }
 }
 
 document.addEventListener('click', (e) => {
     const lightbox = document.getElementById('image-lightbox');
-    // Don't close the dialog if the user is clicking inside the lightbox overlay
     if (lightbox && lightbox.classList.contains('active')) return;
 
     if (e.target.tagName === 'DIALOG') {
@@ -161,10 +158,9 @@ function openLightboxGroup(imageArray, startIndex, captionText) {
  * @param {Event} event - The click event to stop propagation.
  */
 function changeLightboxImg(direction, event) {
-    if (event) event.stopPropagation(); // Prevent backdrop close trigger
-    if (currentGroup.length <= 1) return; // Exit if only one image
+    if (event) event.stopPropagation(); 
+    if (currentGroup.length <= 1) return; 
 
-    // Cycle index (with rollover protection)
     currentIndex = (currentIndex + direction + currentGroup.length) % currentGroup.length;
     
     const lightboxImg = document.getElementById('lightbox-img');
@@ -183,22 +179,19 @@ function changeLightboxImg(direction, event) {
 function updateLightboxCounter(counterElement) {
     if (counterElement && currentGroup.length > 1) {
         counterElement.textContent = `${currentIndex + 1} / ${currentGroup.length}`;
-        counterElement.style.display = 'block'; // Show if multi-image
+        counterElement.style.display = 'block'; 
     } else if (counterElement) {
-        counterElement.style.display = 'none'; // Hide if single image
+        counterElement.style.display = 'none'; 
     }
 }
 /**
  * Closes the lightbox and resets variables.
- * @param {Event} event - The click event to check target.
  */
 function closeLightbox(event) {
-    // Only close if user clicked the backdrop or the close 'X' button
     if (event.target.id === 'image-lightbox' || event.target.classList.contains('lightbox-close')) {
         const lightbox = document.getElementById('image-lightbox');
         lightbox.classList.remove('active');
         
-        // Clear variables so they don't persist next time
         currentGroup = [];
         currentIndex = 0;
     }
