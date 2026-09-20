@@ -60,18 +60,18 @@ section {
     align-items: center;
 }
 .logo-img {
-    height: 40px;          /* Controls logo height so header stays slim */
-    width: auto;           /* Maintains original aspect ratio */
+    height: 40px;    
+    width: auto;      
     display: block;
     object-fit: contain;
-    transform: scale(1.32); /* Visual scale boost without affecting layout height */
-    transform-origin: center left; /* Scales outward from the left edge */
-    filter: drop-shadow(0 0 8px rgba(0, 255, 221, 0.6)); /* Signature teal glow */
+    transform: scale(1.32); 
+    transform-origin: center left; 
+    filter: drop-shadow(0 0 8px rgba(0, 255, 221, 0.6)); 
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 .logo-img:hover {
     transform: scale(1.32);
-    filter: drop-shadow(0 0 14px rgba(0, 255, 204, 0.95)); /* Enhances glow on hover */
+    filter: drop-shadow(0 0 14px rgba(0, 255, 204, 0.95)); 
 }
 .nav-list {
     display: flex;
@@ -849,7 +849,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Stacks image/caption/pagination */
+    flex-direction: column; 
 }
 .lightbox-content img {
     max-width: 100%;
@@ -878,8 +878,8 @@ section {
     z-index: 10; /* Ensures they sit over the image */
 }
 /* Specific position for each arrow */
-.lightbox-prev { left: -60px; }  /* Pushed outside the content box */
-.lightbox-next { right: -60px; } /* Adjust these values if your layout needs it */
+.lightbox-prev { left: -60px; }  
+.lightbox-next { right: -60px; } 
 /* Hover glow for navigation */
 .lightbox-prev:hover, .lightbox-next:hover {
     background: rgba(0, 255, 204, 0.3);
@@ -890,7 +890,7 @@ section {
 /* Position for the pagination counter */
 .lightbox-pagination {
     position: absolute;
-    bottom: -35px; /* Sits below the image, above the caption */
+    bottom: -35px; 
     left: 50%;
     transform: translateX(-50%);
     color: rgba(255, 255, 255, 0.7);

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (emailLink) {
         emailLink.addEventListener('click', function(e) {
-            e.preventDefault(); // Stop any default link behavior
+            e.preventDefault(); 
             
             const emailText = 'nm.moore.dev@gmail.com';
             
@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then(() => showSuccess(this, emailText))
                     .catch(err => fallbackCopy(this, emailText));
             } else {
-                // Fallback for older browsers or specific local server environments
                 fallbackCopy(this, emailText);
             }
         });
@@ -74,7 +73,7 @@ function showSuccess(element, originalText) {
 function fallbackCopy(element, text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    textArea.style.position = 'fixed'; // Avoid scrolling to bottom
+    textArea.style.position = 'fixed'; 
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
@@ -126,12 +125,7 @@ document.addEventListener('click', (e) => {
    ========================================================================== */
 let currentGroup = [];
 let currentIndex = 0;
-/**
- * Opens the lightbox for a group of images.
- * @param {string[]} imageArray - Array of image source URLs (e.g., ['img1.png', 'img2.png']).
- * @param {number} startIndex - The index of the image in the array to show first.
- * @param {string} captionText - The text to display in the caption.
- */
+
 function openLightboxGroup(imageArray, startIndex, captionText) {
     if (!imageArray || imageArray.length === 0) return;
 
@@ -152,11 +146,7 @@ function openLightboxGroup(imageArray, startIndex, captionText) {
     
     lightbox.classList.add('active');
 }
-/**
- * Changes the displayed image in the lightbox group.
- * @param {number} direction - 1 for next, -1 for previous.
- * @param {Event} event - The click event to stop propagation.
- */
+
 function changeLightboxImg(direction, event) {
     if (event) event.stopPropagation(); 
     if (currentGroup.length <= 1) return; 
@@ -172,10 +162,7 @@ function changeLightboxImg(direction, event) {
     // === NEW: Update Counter ===
     updateLightboxCounter(lightboxCounter);
 }
-/**
- * Helper function to refresh the pagination counter.
- * @param {HTMLElement} counterElement - The DOM element for the counter.
- */
+
 function updateLightboxCounter(counterElement) {
     if (counterElement && currentGroup.length > 1) {
         counterElement.textContent = `${currentIndex + 1} / ${currentGroup.length}`;
@@ -184,9 +171,7 @@ function updateLightboxCounter(counterElement) {
         counterElement.style.display = 'none'; 
     }
 }
-/**
- * Closes the lightbox and resets variables.
- */
+
 function closeLightbox(event) {
     if (event.target.id === 'image-lightbox' || event.target.classList.contains('lightbox-close')) {
         const lightbox = document.getElementById('image-lightbox');
